@@ -27,6 +27,6 @@ spec:
         queueName: "payment.completed"
         queueLength: "50"
         brokerName: "artemis-activemq"
-        brokerAddress: "test"
+        brokerAddress: "active-mq:61616"
       authenticationRef:
         name: trigger-auth-kedartemis
