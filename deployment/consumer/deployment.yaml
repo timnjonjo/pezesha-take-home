@@ -1,0 +1,42 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pezesha-consumer
+  name: pezesha-consumer-deployment
+spec:
+  selector:
+    matchLabels:
+      app: pezesha-consumer
+  replicas: 1
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        app: pezesha-consumer
+    spec:
+      containers:
+        - name: pezesha-consumer
+          image: ImageName
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: IfNotPresent
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pezesha-consumer-service
+  labels:
+    run: pezesha-consumer-service
+spec:
+  type: NodePort
+  ports:
+    - name: pezesha-consumer-port
+      port: 8080
+      protocol: TCP
+  selector:
+    app: pezesha-consumer

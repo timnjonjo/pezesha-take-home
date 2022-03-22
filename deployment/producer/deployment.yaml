@@ -1,0 +1,44 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pezesha-producer
+  name: pezesha-producer-deployment
+  namespace: payment-interfac
+spec:
+  selector:
+    matchLabels:
+      app: pezesha-producer
+  replicas: 1
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        app: pezesha-producer
+    spec:
+      containers:
+        - name: pezesha-producer
+          image: ImageName
+          ports:
+            - containerPort: 8090
+          imagePullPolicy: IfNotPresent
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pezesha-producer-service
+  namespace: payment-interfac
+  labels:
+    run: pezesha-producer-service
+spec:
+  type: NodePort
+  ports:
+    - name: pezesha-producer-port
+      port: 8090
+      protocol: TCP
+  selector:
+    app: pezesha-producer
