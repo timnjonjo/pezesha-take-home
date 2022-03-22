@@ -25,7 +25,7 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
           - name: "ACTIVE-MQ_URL"
-            value: "active-mq:61616"
+            value: "tcp://active-mq:61616"
 
 ---
 
