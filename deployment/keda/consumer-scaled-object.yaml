@@ -1,0 +1,34 @@
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: trigger-auth-kedartemis
+  namespace: kedartemis
+spec:
+  secretTargetRef:
+    - parameter: username
+      name: artemis
+      key: artemis-username
+    - parameter: password
+      name: artemis
+      key: artemis-password
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: pezesha-consumer-scaled-object
+  namespace: kedartemis
+spec:
+  scaleTargetRef:
+    name: pezesha-consumer
+  triggers:
+    - type: artemis-queue
+      metadata:
+        managementEndpoint: "active-mq:8161"
+        queueName: "payment.completed"
+        queueLength: "50"
+        brokerName: "artemis-activemq"
+        brokerAddress: "test"
+      authenticationRef:
+        name: trigger-auth-kedartemis

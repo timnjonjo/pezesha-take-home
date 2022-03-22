@@ -1,4 +1,3 @@
-
 FROM openjdk:8-jre-alpine
 LABEL maintainer="timnjonjo@gmail.com"
 RUN apk add --no-cache bash

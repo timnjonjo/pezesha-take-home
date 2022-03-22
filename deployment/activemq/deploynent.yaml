@@ -2,14 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: mymobi-active-mq
-  name: mymobi-active-mq-deployment
+    app: active-mq
+  name: active-mq-deployment
 spec:
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: mymobi-active-mq
+      app: active-mq
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        app: mymobi-active-mq
+        app: active-mq
     spec:
       containers:
       - image: vromero/activemq-artemis
