@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: pezesha-producer
-          image: ImageName
+          image: sirnjonjo/pezesha-producer:1.0.0
           ports:
             - containerPort: 8090
           imagePullPolicy: IfNotPresent
