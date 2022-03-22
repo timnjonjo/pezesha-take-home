@@ -4,7 +4,6 @@ apiVersion: keda.sh/v1alpha1
 kind: TriggerAuthentication
 metadata:
   name: trigger-auth-kedartemis
-  namespace: kedartemis
 spec:
   secretTargetRef:
     - parameter: username
@@ -18,7 +17,6 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: pezesha-consumer-scaled-object
-  namespace: kedartemis
 spec:
   scaleTargetRef:
     name: pezesha-consumer
