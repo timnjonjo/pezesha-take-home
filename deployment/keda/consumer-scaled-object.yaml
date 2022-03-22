@@ -19,7 +19,7 @@ metadata:
   name: pezesha-consumer-scaled-object
 spec:
   scaleTargetRef:
-    name: pezesha-consumer
+    name: pezesha-consumer-deployment
   triggers:
     - type: artemis-queue
       metadata:
